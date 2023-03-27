@@ -1,0 +1,59 @@
+Evaluation Operator
+- https://www.mongodb.com/docs/v6.0/reference/operator/query-evaluation/
+-----------------------------------------------------------------------------
+|    Operator     |                         Keterangan                      |
+-----------------------------------------------------------------------------
+| $expr           | Menggunakan aggregation operation                       |
+| $jsonSchema     | Validation document sesuai dengan JSON Schema           |
+| $mod            | Melakukan operasi modulo                                |
+| $regex          | Mengambil document sesuai dengan regual epression (PCRE)|
+| $text           | Melakukan pencarian menggunakan text                    |
+| $where          | Mengambil document dengan JavaScript Function           |
+-----------------------------------------------------------------------------
+
+Syntax $expr Operator
+db.<collecton>.find({
+  $expr: {
+    // aggregation expression
+  }
+})
+
+Syntax $jsonSchema Operator
+db.<collecton>.find({
+  $jsonSchema: {
+    // JSON Schema expression
+  }
+})
+
+Syntax $mod Operator
+db.<collecton>.find({
+  <field>: {
+    $mod:[divisor / pembagi, remainder / sisa]
+  }
+})
+
+Syntax $regex Operator
+db.<collecton>.find({
+  <field>: {
+    $regex:/regex,
+    $options: "<option>"
+  }
+})
+
+Syntax $text Operator
+// language, caseSensitive, diacriticSensitive ini semua 'operational'
+db.<collecton>.find({
+  $text: {
+    $search: "string",
+    $language: "string,
+    $caseSensitive: "boolean",
+    $diacriticSensitive: "boolean"
+  }
+})
+
+Syntax $where Operator
+db.<collecton>.find({
+  $where: function(){
+    return true;
+  }
+})

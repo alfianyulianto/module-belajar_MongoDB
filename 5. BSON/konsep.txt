@@ -1,0 +1,41 @@
+BSON
+- BSON singkatan dari Binary JSON, yaitu binary-encoded serialization dokumen seperti JSON
+- Sama seperti JSON, di BSON juga bisa menggunakan embedded object, array dan lain-lain
+- Kanapa MongoDB menggunakan BSON tidak murni menggunakan JSON, karena MongoDB mendunkung tipe data yang tidak hanya teks saja (artinya bisa mengupload gambar, video,dll)
+
+Tipe Data di BSON
+-------------------------------------------------
+|       Tipe Data       |         Alias         |
+-------------------------------------------------
+| Double (default angka)| double                |
+| String                | string                |
+| Object                | object                |
+| Array                 | array                 |
+| Binary Data           | binData               |
+| ObjectId              | objectId              |
+-------------------------------------------------
+| Boolean               | bool                  |
+| Date                  | date                  |
+| Null                  | null                  |
+| Regular Expression    | regex                 |
+| JavaScript            | javascript            |
+| JavaScript with Scope | javascriptWithScope   |
+-------------------------------------------------
+| 32 Bit Integer        | int                   |
+| Timestamp             | timestamp             |
+| 64 Bit Integer        | long                  |
+| Decimal 128           | decimal               |
+| Min key               | minKey                |
+| Max key               | maxKey                |
+-------------------------------------------------
+
+ObjectId
+- Adalah random data yang unik, cepat untukdigenerate dan terurut
+- Nila ObjectId memiliki ukuran 12 byte, konsisten terdiri dari inforasi 4 byte timestamp, 5 byte random value, dan 3 byte incrementing counter
+- ObjectId digunakan sebagai default _id (primary key) di docuemnt jika kita tidak secara explisit menyebutkan _id docuemntnya
+
+Date dan ISODate
+- BSON Date adalah 64 bit integer yang merepresentasikan angka milisecond sejak Unix epoch (1 Januari 1970)
+- Nilai ini bisa merepresentasikan waktu dengan jarak 290 juta tahun sebelum dan setelah epoch
+- ISODate merupakan representasi waktu yang digunakan oleh MongoDB
+- Date ini kompaitable Date di JavaScript

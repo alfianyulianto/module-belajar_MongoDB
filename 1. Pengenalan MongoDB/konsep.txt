@@ -1,0 +1,40 @@
+Pengenalan MongoDB
+- MongoDB merupakan 'free dan opensource' database management system
+- MongoDB merupakan database NoSQL (Not Only SQL)
+- MongoDB merupakan database management system berbasis 'docuemnt'
+- Dikembangkan oleh perusahaan bernama '10gen tahun 2007'
+- Diliris ke public tahun 2009
+- Saat ini perusahaan 10gen sudah berganti nama menjadi 'MongoDB Inc'
+- MongoDB hampir mendukung semua bahasa pemograman sebagai client nya
+- MongoDB tidak menggunakan SQL, namun menggunakan 'JavaScript' sebagai bahasa utama untuk 'manipulasai docuemnt'
+- http://github.com/mongodb/mongo
+
+Apa itu Docuemnt Otrineted Database
+- Merupakan sistem database yang digunakan untuk memanipulasi data dalam bentuk document / semi structured data (ketika kita menggunakan relational database datanya akan berbentuk row/recod mirip seperti table sehingga datanya fiks jadi ketika kita mengisikan data yang mana tidak ada columnnya maka tidak akan bisa, berbeda dengan no relational database tidak ada istilah column sehingga kita bebas mau menentukan bentuk doecumentnya seperti apa)
+- Biasanya docuemnt disimpan dalam bentuk 'JSON atau XML'
+- Docuemnt oriented database biasanya bertolak belakang dengan relational database
+- Relational database biasanya menyimpan data dalam bentuk table, dan menyimpan relasinya di table lain
+- Document oriented database biasanya menyimpan data dalam bentuk 'JSON atau XML', dan menyimpan relasinya sebagai 'embedded object' di dalam docuemnt yang sama
+
+Istilah Relational DB vs Document DB
+-----------------------------------------------------------------------------------------
+|             Relational DB             |              Docuemnt DB (MongoDB)            |
+-----------------------------------------------------------------------------------------
+| Database                              | Database                                      |
+| Table                                 | Collection                                    |
+| Column                                | Field                                         |
+| Row, Record                           | Docuemnt (JSON, XML, dll)                     |
+| Join Table                            | Embedded Document, Reference                  |
+| SQL                                   | JavaScript (MongoDB)                          |
+-----------------------------------------------------------------------------------------
+
+Mongo Shell
+- MongoDB menyediakan aplikasi mongi client berupa command line interface untuk terkoneksi ke MongoDB Server dengan nama mongo Shell
+- Mongo shell sangat bermanfaat saat kita harus konek ke mongo server tanpa GUI
+- Mongo shell menggunakan bahasa pemograman JavaScript
+
+MongoDB GUI Client
+- MongoDB Compass (free)
+- JetBrains DataGrip (berbayar jika memiliki lesince)
+- MongoDB for Visual Studio Code
+- Robo 3T

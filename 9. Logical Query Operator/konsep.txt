@@ -1,0 +1,31 @@
+Logical Query Operator
+- Membandingkan 2 atau lebih query expression
+-------------------------------------------------------------------------------------------------------------
+| Operator |                                        Keterangan                                              |
+-------------------------------------------------------------------------------------------------------------
+| $and     | Menggabungkan query dengan operasi AND, mengembalikan document jika semua benar                |
+| $or      | Menggabungkan query dengan operasi OR, mengembalikan document jika salah satu kondisi benar    |
+| $nor     | Menggabungkan uqery dengan operasi NOR, mengembalikan docuement yang gagal di semua kondisi    |
+| $not     | mengembalikan kondisi, mengembalikan docuement yang tidak sesuai konsisi                       |
+-------------------------------------------------------------------------------------------------------------
+
+Syntax Logical Operator ($and, $or, $nor)
+db.<collecion>.find({
+  <operator>: [
+    {
+      // query expression
+    },
+    {
+      // query expression
+    }
+  ]
+})
+
+Syntax Logical Operator ($not)
+db.<collecion>.find({
+  <field>: {
+    $not:{
+      // operator expression
+    }
+  }
+})

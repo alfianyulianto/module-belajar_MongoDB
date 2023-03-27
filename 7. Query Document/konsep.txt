@@ -1,0 +1,16 @@
+Query Document
+- Sama seperti di relational database, di MongoDB pun kita bisa melakukan query atau pencarian document yang sudah kita simpan di collection
+
+Query Document Function
+-------------------------------------------------------------------
+|           Function            |             Keterangan          |
+-------------------------------------------------------------------
+| db.<collection>.find(query)   | Mencari document dengan query   |
+-------------------------------------------------------------------
+
+Syntax Query Document
+db.<collection>.find({
+  <field>:<value>
+})
+
+- Jika kita menggunakan embeded document maka <field> berbentuk string

@@ -1,0 +1,62 @@
+Kenapa Perlu Mengerti Data Modeling
+- Pindah dari relational database ke document database bukanlah hal yang sederhana hanya dengan memindahkan semua table ke collection
+- Penggunaan document database tidak akan mendatangkan manfaat besarjika tidak mengerti cara memodellkan data untuk kebutuhan aplikasi kita
+- Saat memodelkan data menggunakan relational database, biassana kita mengacu ke database normalization
+- Saat memodelkan data menggunakan document database, kita harus mengacu ke penggunaan aplikasi dalam melakukan query, update dan memproses data
+
+Schema yang Flexible (karena NoSQL berbentuk JSON jadi sangat flexible)
+- Tidak seperti di relational database, di MongoDB kita bisa memasukan data ke colletion secara langsung tanpamendefinisikan schema collectionnya
+- Schema untuk colletion di MongoDB sangat flexible, tiap document bisa berbeda. Tidak seperti table di relational database yang harus sama tiap record / row (semisal jika di relational ada 3 column datanya juga harus ada 3 column juga, tapi di no relational tidak harus jadi bisa 4 5 6 dan bahkan lebih sedikit )
+- Namun pada prakteknya, sangat direkomendasikan mengguanakn jenis data yang sama untuk tiap collection, walaupun bisa berbeda-beda di collection yang sama
+
+Primary Key
+- Saat membuat document di MongoDB, kita wajib menambahkan 'primary key'
+- Tidak seperti relational database yang bebas membuat column untuk primary key, di MongoDB 'primary key' wajib menggunakan 'field _id'
+- Selain itu primary key tidak bisa lebih dari '1 field', hanya bisa 'field _id', jadi jika kita ingin membuat 'composite priary key', maka kita hanya bisa melakukan dengan menggunakan '1 field _id'
+
+Struktur Dokumen - Embedded
+{<--! collection-->
+  _id = <ObjectId1>.
+  username: "123xyz",
+  contact: { <--! Embedded sub document-->
+    phone: "123-456-7890",
+    email: "xyz@example.com"
+  },
+  access: { <--! Embedded sub document-->
+    level: 5,
+    group:"dev"
+  }
+}
+
+Struktur Dokumen - Reference
+<--! user document-->
+{
+  _id: <ObjectId1>,
+  username: "123xyz"
+}
+
+<--! contact document-->
+{
+  _id: <ObjectId2>,
+  user_id: <ObjectId2>,
+  phone: "123-456-7890",
+  email: "xyz@example.com"
+}
+
+<--! access document-->
+{
+  _id: <ObjectId3>,
+  user_id:<ObjectId1>,
+  level:5,
+  grup: "dev"
+}
+
+Embedded vs Reference
+- Gunakan Embedded jika:
+  * Antar document saling ketergantungan
+  * Tidak bisa langsung melakukan perubahan ke embedded document
+  * Embedded document selalu dibutuhkan ketika mengambil data document
+- Gunakan Reference jika:
+  * Antar docuemnt berdidi sendiri dan tidak terlalu ketergantungan satu sama lain
+  * Bila melakukan manipulasi data langsung terhadap reference deocument
+  * Reference deocument tidak selaly dibutuhkan saat mengambil deocument

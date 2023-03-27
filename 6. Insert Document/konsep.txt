@@ -1,0 +1,13 @@
+Insert Document
+- Untuk menyimpan data ke MongoDB, kita juga membuat document dalam bentuk JSON
+- Field _id wajib dimasukan, jika kita tidak memasukan field _id, maka secara otomatis MongoDB akan menbuat _id baru secara random dengan tipe data ObjectId
+- Atau kita juga secara explisit membuat ObjectId baru dengan menggunakan perinat "new ObjectId()"
+
+Insert Document Function
+-------------------------------------------------------------------------------------------------
+|                 Function                  |                      Keterangan                   |
+-------------------------------------------------------------------------------------------------
+| db.<collection>.insertOne(document)       | Menambahkan document ke collection                |
+| db.<collection>.insertMany(array<document)| Menambahkan semau dokument di array ke collection |
+| db.<collection>.insert(document / array)  | Menambahkan satu document atau banyak document    |
+-------------------------------------------------------------------------------------------------
