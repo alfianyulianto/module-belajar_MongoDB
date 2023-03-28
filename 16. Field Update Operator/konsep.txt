@@ -1,0 +1,67 @@
+Update Document Function
+-------------------------------------------------------------------------------------------
+|   Operator    |                                 Keterangan                              |
+-------------------------------------------------------------------------------------------
+| $set          | Mengubah nilai field di document                                        |
+| $unset        | Mengahpus field di document                                             |
+| $rename       | Mengubah nama field di document                                         |
+| $inc          | Menaikan nilai number di field sesuaia dengan jumlah tertentu (increment)|
+| $currentDate  | Mengubah field menjadi waktu saat ini                                   |
+-------------------------------------------------------------------------------------------
+
+Syntax $set Operator
+db.<collection>.find({
+  //query
+}, {
+  $set: {
+    field1: "value",
+    field2: "value",
+    field3: "value"
+  }
+})
+
+Syntax $unset Operator
+db.<collection>.find({
+  //query
+}, {
+  $unset: {
+    field1: "",
+    field2: "",
+    field3: ""
+  }
+})
+
+Syntax $rename Operator
+db.<collection>.find({
+  //query
+}, {
+  $rename: {
+    field1: "newNameField1",
+    field2: "newNameField2",
+    field3: "newNameField3"
+  }
+})
+
+Syntax $inc Operator
+db.<collection>.find({
+  //query
+}, {
+  $inc: {
+    field1: 1, // increment
+    field2: -1 // document
+  }
+})
+
+Syntax $currentDate Operator
+db.<collection>.find({
+  //query
+}, {
+  $currentDate: {
+    field1: {
+      $type:"date"
+    },
+    field2: {
+      $type: "timestamp"
+    },
+  }
+})

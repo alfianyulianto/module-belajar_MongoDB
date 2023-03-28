@@ -1,0 +1,35 @@
+Update Document
+- Sama seperti database lainnya, di MongoDB kita juga bisa mengubah document yang sudah kita insert ke collection
+- Namun berbeda dengan perintah SQL, di MongoDB untuk mengubah document kita diberikan beberapa function
+- Untuk update document, kita bisa menggunakan collection:db.<collection>.<updateFunction>()
+
+Update Document function
+-----------------------------------------------------------------------------------------------
+|     Operator      |                               Keterangan                                |
+-----------------------------------------------------------------------------------------------
+| updateOne()       | Mengubah satu document                                                  |
+| updateMany()      | Mengubah banyak document sekaligus                                      |
+| replaceOne()      | Mengubah total satu document dengan document lain                       |
+-----------------------------------------------------------------------------------------------
+
+Syntax updateOne() Function
+db.<collection>.updateOne(
+  {}, // fillter
+  {}, // update
+  {}  // option
+)
+
+Syntax updateMany() Function
+db.<collection>.updateMany(
+  {}, // fillter
+  {}, // update
+  {}  // option
+)
+
+Syntax replaceOne() Function
+db.<collection>.replaceOne(
+  {}, // fillter
+  {}, // replacement
+  {}  // option
+)
+

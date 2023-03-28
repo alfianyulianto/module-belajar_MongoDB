@@ -66,9 +66,9 @@ db.products.find({
 // ? select * from products where type(category) = "string"
 db.products.find({
   category: {
-    $ype: "string"
-  }
-})
+    $type: "string",
+  },
+});
 /**
  * TODO Output:
  [
@@ -92,6 +92,16 @@ db.products.find({
   }
 ]
 
+ */
+
+// ? select * from products where type(category) = "int"
+db.products.find({
+  category: {
+    $type: "int",
+  },
+});
+/**
+ * TODO tidak ada output yang dikekuarkan karena tidak ada data products yang categorynya bertype 'integer'
  */
 
 /**

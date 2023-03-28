@@ -1,0 +1,33 @@
+Array Operator
+-------------------------------------------------------------------------------------------
+|   Operator  |                                 Keterangan                                |
+-------------------------------------------------------------------------------------------
+| $all        | Mencocokan array yang mengandung element-element tertentu                 |
+| $elemMatch  | Memngambil docuement jika tiap element di array memenuhi kondidi tertentu |
+| $size       | Memngambil docuement jika ukuran array sesuai                             |
+-------------------------------------------------------------------------------------------
+
+Syntax $all Operator
+db.<collection>.find({
+  <field>: {
+    $all: ["value"]
+  }
+})
+
+Syntax $elemMatch Operator
+db.<collection>.find({
+  <field>: {
+    $elemMatch: {
+      // query1,
+      // query2
+    }
+  }
+})
+
+Syntax $size Operator
+db.>collection>.find({
+  <field>: {
+    $size: 1 //length
+  }
+})
+ 

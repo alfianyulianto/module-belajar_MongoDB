@@ -73,6 +73,19 @@ db.products.find({
     },
   },
 });
+/**
+ * TODO Output:
+ [
+  { _id: 1, name: 'Indomie ayam bawang', price: Long("2000") },
+  { _id: 2, name: 'Mie sedap', price: Long("2000") },
+  {
+    _id: 3,
+    name: 'Pop Mie Rasa Bakso',
+    price: Long("2500"),
+    category: 'food'
+  }
+]
+ */
 
 /**
  * * DATA PRODUCT

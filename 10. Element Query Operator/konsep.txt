@@ -1,9 +1,9 @@
 Element Operator
 -----------------------------------------------------------------------------------------------------
-| Operator  |                                       Keterangan                                      |
+| Operator |                                       Keterangan                                       |
 -----------------------------------------------------------------------------------------------------
-| $exists   | Mencocokan document yang memiliki field tersebut (sql: not null) (value: true, false) |
-| $type     | Mencocokan document yang memiliki type field tersebut (value: tring,int)              |
+| $exists  | Mencocokan document yang memiliki field tersebut (sql: not null) (value: true, false)  |
+| $type    | Mencocokan document yang memiliki type field tersebut (value: string,int, boo, date, timestamp)|
 -----------------------------------------------------------------------------------------------------
 
 Syntax Element Operator

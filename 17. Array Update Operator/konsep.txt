@@ -1,0 +1,49 @@
+Array Update Operator
+- Secara default, saat kita mengubaj field dengan tipe array, maka seluruh array akan diubah
+- Kadang kita ingin menambahkan, ata hana mengubah data array tanpa harus mengubaj seluruh field array
+- Hal ini bisa dilakukan di MongoDB
+
+Array Update Operator
+-------------------------------------------------------------------------------------------
+|   Operator      |                                 Keterangan                            |
+-------------------------------------------------------------------------------------------
+| $               | Mengupdate data array pertama sesuai kondisi query                    |
+| $[]             | Mengupdate semua data array sesuai kondisi array                      |
+| $[<identifier>] | Mengupdate semua data array yang sesuai kondisi arrayFillters         |
+| <index>         | Mengupdate data array sesuai dengan nomer index                       |
+-------------------------------------------------------------------------------------------
+
+Syntax $ Operator
+db.<collection>.updatMany({
+  <field>: <value>
+}, {
+  <$operator>: {
+    "field.$": "value"
+  }
+})
+
+Syntax $[] Operator
+db.<collection>.updateMany({
+  // query
+},{
+  <$operator>:{
+    "field>$[]":"value"
+  }
+})
+
+Syntax $[<identifier>] Operator
+db.<collection>.updateMany({
+  // query
+}, {
+  <$operator>:{
+    "field.$[element]": "value"
+  }
+}, {
+  arrayFillters:{
+    {
+      element: {
+        $operator: "value"
+      }
+    }
+  }
+})

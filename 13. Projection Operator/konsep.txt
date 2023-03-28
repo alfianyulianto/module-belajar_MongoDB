@@ -1,0 +1,65 @@
+Projection
+- Pada function find, terdapat parameter kedua setelah query, yaitu projection
+- Projection adalah memilih feld mana yang ingin kita mabil atau hide
+- db.<collection>.find(<query>, projection)
+
+Syntax Projection
+db.<collection>.find(
+  {
+  //query
+  }, 
+  {
+    <field1>:1 // artinya diinclude ke hasil query
+    <field2>:0 // artinya dihide dari hasil query
+  }
+)
+
+Projection Operator
+-----------------------------------------------------------------------------------------------------------
+|   Operator    |                                       Keterangan                                        |
+-----------------------------------------------------------------------------------------------------------
+| $             | Limit array hanya mengembalikan data pertama yang match dengan array operator           |
+| $elemMatch    | Limit array hanya mengembalikan data pertama yang match dengan kondisi query            |
+| $meta         | Mengembalikan informasi metadata yang didapat dari setiap matching document             |
+| $slice        | Mengontrol jumlah data yan ditambahkan pada array                                       |
+-----------------------------------------------------------------------------------------------------------
+
+Syntax $ Operator
+db.<collection>.find({
+  <field>: {
+    $elemeMatch: {
+      //query
+    }
+  }
+},{
+  "field.$":1
+})
+
+Syntax $elemMatch Operator
+db.<collection>.find({}, {
+  <field>: {
+    $elemMatch: {
+    // query
+    }
+  }
+})
+
+Syntax $mete Operator
+db.<collection>.find({
+  $text: {
+    $search: "query"
+  }
+}, {
+  score: {
+    $meta: "textscore"
+  }
+})
+
+Syntax $slice Operator
+db.<collection>.find({
+  //query
+}, {
+  <field>: {
+    $slice:2 // slice size
+  }
+})
