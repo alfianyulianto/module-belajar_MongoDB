@@ -3,12 +3,12 @@ Array Update Operator
 - Kadang kita ingin menambahkan, ata hana mengubah data array tanpa harus mengubaj seluruh field array
 - Hal ini bisa dilakukan di MongoDB
 
-Array Update Operator
+Array Update Operator (1)
 -------------------------------------------------------------------------------------------
 |   Operator      |                                 Keterangan                            |
 -------------------------------------------------------------------------------------------
 | $               | Mengupdate data array pertama sesuai kondisi query                    |
-| $[]             | Mengupdate semua data array sesuai kondisi array                      |
+| $[]             | Mengupdate semua data pada element array sesuai kondisi array         |
 | $[<identifier>] | Mengupdate semua data array yang sesuai kondisi arrayFillters         |
 | <index>         | Mengupdate data array sesuai dengan nomer index                       |
 -------------------------------------------------------------------------------------------
@@ -44,6 +44,131 @@ db.<collection>.updateMany({
       element: {
         $operator: "value"
       }
+    }
+  }
+})
+
+Syntax <index> Operator
+db.<collection>.find({
+  // query
+}, {
+  <$operator>:{
+    "field.<index>": "value"
+  }
+})
+
+Array Update Operator (2)
+-----------------------------------------------------------------------------------------------------
+| Operator    |                                       Keterangan                                    |
+-----------------------------------------------------------------------------------------------------
+| $addToset   | Menambahkan value ke array, dihiraukan jika sudah ada                               |
+| $pop        | Menghapus element pertama(-1) atau terakhir (1) array                               |
+| $pull       | Menghapus semua element di array yang sesuai kondisi                                |
+| $push       | Menambahkan element ke array                                                        |
+| $pullAll    | Menghapus semua element di array                                                    |
+-----------------------------------------------------------------------------------------------------
+
+Syntax $addToset Operator
+db.<collection>.udapteMany({
+  // query
+}, {
+  $addToset: {
+    <field>: "value"
+  }
+})
+
+Syntax $pop Operator
+db.<collection>.updayeMany({
+  // query
+}, {
+  $pop: {
+    <field>: -1 // menghapus element pertama array
+  }
+})
+
+Syntax $pull Operator
+db.<collection>.udapteMany({
+  // query
+}, {
+  $pull: {
+    <field>:{
+      // kondisi $eq, $gt, $lte, dsb
+      <$operator>: "value"
+    }
+  }
+})
+
+Syntax $push Operator
+db.<collection>.updateMany({
+  // query
+}, {
+  $push: {
+    <field>: "value"
+  }
+})
+
+Syntax $pullAll Operator
+db.<collection>.updateMany({
+  // query
+}, {
+  $pullAll: {
+    <field>: ["value"]
+  }
+})
+
+Array Update Operator Modifier
+-----------------------------------------------------------------------------------------------------
+| Operator  |                                       Keterangan                                      |
+-----------------------------------------------------------------------------------------------------
+| $each     | Digunakan di $addToset dan $push, untuk menambahkan miltiple element                  |
+| $position | Digunakan di $push untuk mengubah posisi menambahkan data                             |
+| $slice    | Digunakan di $push untuk menentukan jumlah maksimal data array                        |
+| $sort     | Digunakan untuk mengurutkan array setelah operasi $push (1 ASC dan -1 DESC)           |
+-----------------------------------------------------------------------------------------------------
+
+Syntax $each operator
+db.<collection>.updateMany({
+  // query
+}, {
+  <$operator>: {
+    <field>:{
+      $each:["value1", "value2"]
+    }
+  }
+})
+
+Syntax $position Operator
+db.<collection>.updateMany({
+  // query
+}, {
+  <$operator>: {
+    <field>:{
+      $each:["value"],
+      $position: 1
+    }
+  }
+})
+
+Syntax $slice Operator
+db.<collection>.updateMany({
+  // query
+}, {
+  <$operator>: {
+    <field>:{
+      $each:["value1", "value2"],
+      $slice: 1 // artinya setelah mengepush data ke array maka maksimal data yang tersimpan hanya boleh 1 terakhir
+    }
+  }
+})
+
+Syntax $sort Operator
+db.<collection>.updateMany({
+  // query
+}, {
+  <$operator>: {
+    <field>:{
+      $each:["value"],
+      $sort: 1 // sorting secara ASC
     }
   }
 })

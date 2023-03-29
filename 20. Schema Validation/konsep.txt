@@ -1,0 +1,34 @@
+Schema Validation
+- Pada Relational DB, kita bisa menambahkan constraint terhadap daoa yang ada di tabel
+- Misal, maksimal karakter, Enum string, Not Null, dan lain-lain
+- Di MongoDB, fitur untuk validasi data lebih canggih dibandingkan constraint di Relational DB
+- MongoDB mendukung Schema Validation menggunakan JSON Schema
+
+JSON Schema
+- Adalah standar resmi untuk memvalidasi data JSON
+- Dengan menggunakan JSON Schema, kita bisa memberi batasan, data JSON apa yang valid, sehingga bisa dimasukan ke dalam collection
+- http://json-schema.org/
+
+
+- Ketika kita membuat 'createCollection' maka disitulah kita menambahkan 'Validator dengan JSON Schema'
+
+Syntax Create Collection dengan Validator
+db.createCollection("collection", {
+  validator: {
+    $jsonSchema: {
+      // json schema
+    }
+  }
+})
+
+Syntax Update Collection dengan Validator
+- Katika menggunakan Update Colection dan sudah ada data di collection maka data tersebut tidak akan berubah walaupun tidak sesuai dengan validationnya. Tappi jika kita melakukan update data lamanya maka barulah data tersebut akan di validasi
+db.runCommand({
+  collMod: <"ollection",
+  ValidationAction: "error", // untuk menghandle error
+  validator: {
+    $jsonSchema: {
+      // json schema
+    }
+  }
+})
