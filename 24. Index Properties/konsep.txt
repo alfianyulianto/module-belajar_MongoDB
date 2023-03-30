@@ -1,0 +1,27 @@
+Index Properties
+- MongoDB mendukung properties di Index
+- Istilah properties di index memang agak sedikit membingungkan, sedarhanannya adlaah menambahkan behaviour atau kemampuan tertentu terhadap index yang kita buat
+
+TTL Index
+- TTL singkatan dari Time to Live, yaitu waktu untuk hidup
+- TTL Index digunakan waktu untuk hidup document di collection, artinya data akan hilang dikurun waktu tertentu
+- TTL Index hanya dapat digunakan untuk filed yang bertipe data Date
+- Background proses di MongoDB akan secara reguler melakukan penghapusan data seara otomatis
+- Syangnya, proses background tersebut berjalan setiap 60 detika
+- Kegunaan TTL Index digunakan untuk menyimpan data "temporary", contohnya ketika ingin meinsert data di MongoDB dan kita ingin expired an selama 1 jam, maka cocok untuk menggunakan TTL Index
+
+Syntax TTL Index
+db.<collection>.createIndex({
+  <field> :1 // <field> harus tipe data Date. 1 berarti ASC
+}, {
+  expireAfterSecond: 10 // memberikan waktu expired, jika kita mengupdate field pada pukul 1.00 maka 1.10 filedn akan hilang
+})
+
+Unique Index
+- Unique Index memastikan bahwa field-field di index tersebut tidak menimpan data duplikat
+- Contohnya, di MongoDB field _id secara otomatis merupakan unique index, sehinga kita tidak bisa membuat document dengan field_id yang sama
+db.<collection>.createIndec({
+  <field>:1 // ASC
+}, {
+  unique: true
+})

@@ -24,7 +24,7 @@ db.createCollection("collection", {
 Syntax Update Collection dengan Validator
 - Katika menggunakan Update Colection dan sudah ada data di collection maka data tersebut tidak akan berubah walaupun tidak sesuai dengan validationnya. Tappi jika kita melakukan update data lamanya maka barulah data tersebut akan di validasi
 db.runCommand({
-  collMod: <"ollection",
+  collMod: <collection>,
   ValidationAction: "error", // untuk menghandle error
   validator: {
     $jsonSchema: {

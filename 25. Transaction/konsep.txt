@@ -1,0 +1,31 @@
+Transaction
+- Di Relational DB, fitur yang sangat bergua dan banyak digunakan adalah fitur Transaction
+- Fitur Transaction secara sederhana adalah menggabungkan beberapa operasi database dalam satu Transaction, diaman Transaction dianggal sukses jika semua operasi sukses, dan Transaction akan gagal jika salah satu operasi gagal
+- Dan jika gagal, maka seluruh Transaction sebelumna akan dibatalkan (rollback)
+- Fitur Transaction di MongoDB hanya berljalan di cluster (replica-set), tida di single node
+- Dalam cluster, database akan emmiliki primary key dan secondary data
+
+Transaction Function
+-----------------------------------------------------------------------------------------
+|             Function              |                       Keterngan                   |
+-----------------------------------------------------------------------------------------
+| session.stratTransaction()        | Memulai transaksi                                 |
+| session.commitTransaction()       | Commit transaksi                                  |
+| sessio.abortTransaction()         | Membatalkan transaksi                             |
+-----------------------------------------------------------------------------------------
+
+Read Preferences
+- Read preferences adalah bagaiaman MongoDB mengkontrol dari mana kita membaca data
+  * primary: Semua query diambil dari primary replica set
+  * primaryPreferred:  Semua query diambil primary replica set, namun jika tidak ada primary replica set maka diambil dari secondary replica set
+  * secondary: Semua qury diambil dari secondary replica set
+  * secondaryPreferred: Semua query diambil dari secondary replica set, namun jika tidak ada secondary replica set, maka diambil dari primary replica set
+  * nearest: Semua query diambil dari replica set paling mudah dari latencynya
+
+Read Concern
+- Read concern adalah bagiaman MongoDB mengkontrol data yang kita dapatkan
+  * local: Data akan didapatkan dari local node
+  * available: Data akan didaptkan dimanapun (tidak peduli node man)
+  * majority: Data akan didapatkan di mayoritas data di semua node
+  * linierizable: Data akan dipastikan data paling terbaru di semua node
+  * snapshot: Data akan diambil dari mayoritas data snapshot (data yang telah di commit) di semua node

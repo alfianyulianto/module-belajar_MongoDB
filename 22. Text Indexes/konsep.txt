@@ -1,0 +1,15 @@
+Text Indexes
+- MongoDB menyediakan text index untuk melakukan pencarian text di tipe data string
+- Text index tidak hanya dapat digunakan untuk tipe data string melakukan juga untuk tipe data array yang didalamnya berisi tipe data string
+
+Syntax Text Index
+db.<collection>.createIndex({
+  <field1>: "text",
+  <filed2>: "text"
+}, {
+  // weights sebuah property option yang digunakan untuk memberikan score
+  weighst: {
+    field1: 10,
+    field2: 5
+  }
+})

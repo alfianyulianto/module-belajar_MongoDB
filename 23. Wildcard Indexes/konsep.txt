@@ -1,0 +1,10 @@
+Wildcard Indexes
+- MongoDB mendukung wildcard index, dimana ini digunakan untuk membuat index terhadap field yang belum diketahui atau field sering beruba-ubah
+- Misal contoh kita punya embeded document dengan tipe filed customeFields, dimana isinya bisa bebas susuai dengan data yang dimasukan
+- Agar bisa mendukung query yang cepat pada field tersebut, kita bisa menggunakan wildcard index
+- Wildcard index bertujuan untuk membuat index pada embeded document
+
+Syntax Wildcard Index
+db.<collection>.createIndex({
+  "filed.$**":1
+})
